@@ -29,7 +29,3 @@ dependencies {
     compile("org.springframework.boot:spring-boot-devtools")
     testCompile("junit:junit")
 }
-
-task stage {
-  dependsOn installDist
-}
