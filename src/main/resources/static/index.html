@@ -1,10 +1,32 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Hello Spring Boot!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <style>
+        body { padding-top: 70px; }
+    </style>
 </head>
 <body>
-    <p>Get your greeting <a href="/greeting">here</a></p>
+<div class="container">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a th:href="@{appDirectClient}">AppDirect Client Info</a></li>
+                <li><a th:href="@{appDirectClientList}">AppDirect Client List</a></li>
+             <!--  <li><a href="/logout" th:if="${authenticated}">logout</a></li> -->   
+            </ul>
+        </div>
+    </div>
+    <div class="starter-template">
+        <h1>AppDirect Challenge - Arjun Karnwal</h1>
+        <table>
+            <tr><td><a th:href="@{appDirectClient}">AppDirect Client Info</a></td></tr>
+            <tr><td><a th:href="@{appDirectClientList}">AppDirect Client List</a></td></tr>
+        </table>
+    </div>
+</div>
 </body>
 </html>
