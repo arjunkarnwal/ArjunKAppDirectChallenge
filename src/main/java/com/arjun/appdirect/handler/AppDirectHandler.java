@@ -23,11 +23,13 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 /**
  * The AppDirectClient handles all communication with AppDirect's APIs. It's primary purpose is to handle the low-level
  * communication details such as transport protocols and marshalling/unmarshalling.
  */
+@Service
 public class AppDirectHandler {
 
     private static Logger log = LoggerFactory.getLogger(AppDirectHandler.class);
