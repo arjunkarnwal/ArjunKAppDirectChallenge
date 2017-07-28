@@ -1,6 +1,8 @@
 package com.arjun.appdirect.controller.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.openid.OpenIDAuthenticationStatus;
+import org.springframework.security.openid.OpenIDAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,17 +17,17 @@ public class UserController {
     UserService userService;
     
     
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public String showCurrentUser(Model model) {
-       // model.addAttribute("authentication", authentication);
-       // model.addAttribute("authenticated", authentication != null ? OpenIDAuthenticationStatus.SUCCESS.equals(authentication.getStatus()) : Boolean.FALSE);
-        return "user";
+    @RequestMapping(value = "/appDirectUser", method = RequestMethod.GET)
+    public String showCurrentUser(Model model, OpenIDAuthenticationToken authentication) {
+       model.addAttribute("authentication", authentication);
+       model.addAttribute("authenticated", authentication != null ? OpenIDAuthenticationStatus.SUCCESS.equals(authentication.getStatus()) : Boolean.FALSE);
+       return "appDirectUser";
     }
 
     @RequestMapping(value = "/appDirectUsers", method = RequestMethod.GET)
-    public String showAllUsers(Model model) {
+    public String showAllUsers(Model model, OpenIDAuthenticationToken authentication) {
         model.addAttribute("users", userService.getAll());
-        //model.addAttribute("authenticated", authentication != null ? OpenIDAuthenticationStatus.SUCCESS.equals(authentication.getStatus()) : Boolean.FALSE);
+        model.addAttribute("authenticated", authentication != null ? OpenIDAuthenticationStatus.SUCCESS.equals(authentication.getStatus()) : Boolean.FALSE);
         return "appDirectUsers";
     }
 

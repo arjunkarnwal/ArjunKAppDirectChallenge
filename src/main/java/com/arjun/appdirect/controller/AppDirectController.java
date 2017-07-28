@@ -18,13 +18,12 @@ import com.arjun.appdirect.action.GetUserUnassignedEventAction;
 import com.arjun.appdirect.handler.AppDirectHandler;
 import com.arjun.appdirect.model.User;
 import com.arjun.appdirect.model.event.EventResult;
+import com.arjun.appdirect.model.event.subscription.SubscriptionCancelEvent;
 import com.arjun.appdirect.model.event.subscription.SubscriptionOrderEvent;
 import com.arjun.appdirect.model.web.UserProfile;
 import com.arjun.appdirect.service.UserService;
 
-/**
- * http://info.appdirect.com/developers/docs/api_integration/subscription_management
- */
+
 @RestController
 @RequestMapping("/appdirect")
 public class AppDirectController {
@@ -66,14 +65,14 @@ public class AppDirectController {
         return result;
     }
 
-    /**
+    
     @RequestMapping("/subscription/cancel")
     public EventResult cancelSubscription(HttpServletRequest request,
             @RequestParam String url,
             @RequestParam String token,
             @AuthenticationPrincipal ConsumerAuthentication authentication) {
 
-        logRequest(request, authentication);
+       // logRequest(request, authentication);
 
         // get event details
         GetSubscriptionCancelEventAction action = new GetSubscriptionCancelEventAction(appDirectClient);
@@ -90,6 +89,8 @@ public class AppDirectController {
 
         return result;
     }
+    
+    /**
 
     @RequestMapping("/user/assign")
     public EventResult assignUser(HttpServletRequest request,
