@@ -51,7 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .csrf().disable();
         http
             .authorizeRequests()
-                .antMatchers("/", "/home", "/appdirect/**", "/test/**").permitAll()
+                .antMatchers("/**", "/home", "/appdirect/**", "/test/**").permitAll()
                 .anyRequest().authenticated();
         http
             .openidLogin()
@@ -60,15 +60,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .attributeExchange("https://www.appdirect.com.*")
                     .attribute("email")
                         .type("http://axschema.org/contact/email")
-                        .required(false)
+                        .required(true)
                         .and()
                     .attribute("firstname")
                         .type("http://axschema.org/namePerson/first")
-                        .required(false)
+                        .required(true)
                         .and()
                     .attribute("lastname")
                         .type("http://axschema.org/namePerson/last")
-                        .required(false);
+                        .required(true);
         http.logout()
                 .logoutSuccessHandler(new CustomLogoutSuccessHandler());
         http.addFilterAfter(oAuthProviderProcessingFilter(), OpenIDAuthenticationFilter.class);
