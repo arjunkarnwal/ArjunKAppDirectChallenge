@@ -6,7 +6,31 @@ import lombok.Data;
 public class ActionResult<T> {
 
     private T entity;
-    private boolean success;
+    public T getEntity() {
+		return entity;
+	}
+
+	public void setEntity(T entity) {
+		this.entity = entity;
+	}
+
+	public boolean isSuccess() {
+		return success;
+	}
+
+	public void setSuccess(boolean success) {
+		this.success = success;
+	}
+
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
+	}
+
+	private boolean success;
     private String errorMessage;
 
     public ActionResult() {}

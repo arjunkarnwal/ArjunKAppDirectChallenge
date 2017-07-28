@@ -1,7 +1,7 @@
 package com.arjun.appdirect.action;
 
 import com.arjun.appdirect.handler.AppDirectHandler;
-import com.eheiker.appdirect.domain.appdirect.event.access.UserUnassignedEvent;
+import com.arjun.appdirect.model.event.user.UserUnassignedEvent;
 
 public class GetUserUnassignedEventAction extends GetEventAction {
 

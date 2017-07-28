@@ -3,7 +3,7 @@ package com.arjun.appdirect.action;
 import lombok.experimental.Builder;
 
 import com.arjun.appdirect.handler.AppDirectHandler;
-import com.eheiker.appdirect.domain.appdirect.event.subscription.SubscriptionOrderEvent;
+import com.arjun.appdirect.model.event.subscription.SubscriptionOrderEvent;
 
 public class GetSubscriptionOrderEventAction extends GetEventAction {
 

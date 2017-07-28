@@ -1,7 +1,8 @@
 package com.arjun.appdirect.action;
 
 import com.arjun.appdirect.handler.AppDirectHandler;
-import com.eheiker.appdirect.domain.appdirect.event.subscription.SubscriptionCancelEvent;
+import com.arjun.appdirect.model.event.subscription.SubscriptionCancelEvent;
+
 
 public class GetSubscriptionCancelEventAction extends GetEventAction {
 

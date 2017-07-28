@@ -14,13 +14,13 @@ public class UserController {
     @Autowired
     UserService userService;
     
-    /**
+    
     @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public String showCurrentUser(Model model, OpenIDAuthenticationToken authentication) {
-        model.addAttribute("authentication", authentication);
-        model.addAttribute("authenticated", authentication != null ? OpenIDAuthenticationStatus.SUCCESS.equals(authentication.getStatus()) : Boolean.FALSE);
+    public String showCurrentUser(Model model) {
+       // model.addAttribute("authentication", authentication);
+       // model.addAttribute("authenticated", authentication != null ? OpenIDAuthenticationStatus.SUCCESS.equals(authentication.getStatus()) : Boolean.FALSE);
         return "user";
-    }**/
+    }
 
     @RequestMapping(value = "/appDirectUsers", method = RequestMethod.GET)
     public String showAllUsers(Model model) {
