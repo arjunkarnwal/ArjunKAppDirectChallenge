@@ -29,7 +29,7 @@ import org.springframework.stereotype.Service;
  * The AppDirectClient handles all communication with AppDirect's APIs. It's primary purpose is to handle the low-level
  * communication details such as transport protocols and marshalling/unmarshalling.
  */
-@Service
+
 public class AppDirectHandler {
 
     private static Logger log = LoggerFactory.getLogger(AppDirectHandler.class);
