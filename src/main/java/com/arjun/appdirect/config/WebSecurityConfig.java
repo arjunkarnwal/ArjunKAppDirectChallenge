@@ -51,7 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .csrf().disable();
         http
             .authorizeRequests()
-                .antMatchers("/**").permitAll()
+                .antMatchers("/**", "/home", "/appdirect/**", "/test/**").permitAll()
                 .anyRequest().authenticated();
         http
             .openidLogin()
