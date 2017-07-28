@@ -10,22 +10,23 @@ import com.arjun.appdirect.service.UserService;
 
 @Controller
 public class UserController {
-/**
+
     @Autowired
     UserService userService;
-
+    
+    /**
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public String showCurrentUser(Model model, OpenIDAuthenticationToken authentication) {
         model.addAttribute("authentication", authentication);
         model.addAttribute("authenticated", authentication != null ? OpenIDAuthenticationStatus.SUCCESS.equals(authentication.getStatus()) : Boolean.FALSE);
         return "user";
+    }**/
+
+    @RequestMapping(value = "/appDirectUsers", method = RequestMethod.GET)
+    public String showAllUsers(Model model) {
+        model.addAttribute("users", userService.getAll());
+        //model.addAttribute("authenticated", authentication != null ? OpenIDAuthenticationStatus.SUCCESS.equals(authentication.getStatus()) : Boolean.FALSE);
+        return "appDirectUsers";
     }
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public String showAllUsers(Model model, OpenIDAuthenticationToken authentication) {
-        model.addAttribute("users", userService.getAll());
-        model.addAttribute("authenticated", authentication != null ? OpenIDAuthenticationStatus.SUCCESS.equals(authentication.getStatus()) : Boolean.FALSE);
-        return "users";
-    }
-**/
 }

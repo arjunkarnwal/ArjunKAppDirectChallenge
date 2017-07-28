@@ -3,11 +3,14 @@ package com.arjun.appdirect.repository.web;
 
 import java.io.Serializable;
 
-import com.arjun.appdirect.model.web.User;
+import org.springframework.stereotype.Repository;
 
-public interface UserRepository extends BaseRepository<User, Serializable> {
+import com.arjun.appdirect.model.web.UserProfile;
+
+@Repository
+public interface UserRepository extends BaseRepository<UserProfile, Serializable> {
 	
-	public User findByOpenId(String openId);
-	public User findByEmail(String email);
+	public UserProfile findByOpenId(String openId);
+	public UserProfile findByEmail(String email);
 	
 }
