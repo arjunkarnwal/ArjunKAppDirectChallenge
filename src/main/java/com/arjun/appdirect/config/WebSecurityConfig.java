@@ -60,15 +60,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .attributeExchange("https://www.appdirect.com.*")
                     .attribute("email")
                         .type("http://axschema.org/contact/email")
-                        .required(true)
+                        .required(false)
                         .and()
                     .attribute("firstname")
                         .type("http://axschema.org/namePerson/first")
-                        .required(true)
+                        .required(false)
                         .and()
                     .attribute("lastname")
                         .type("http://axschema.org/namePerson/last")
-                        .required(true);
+                        .required(false);
         http.logout()
                 .logoutSuccessHandler(new CustomLogoutSuccessHandler());
         http.addFilterAfter(oAuthProviderProcessingFilter(), OpenIDAuthenticationFilter.class);
