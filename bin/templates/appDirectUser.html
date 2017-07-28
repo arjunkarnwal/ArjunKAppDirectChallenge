@@ -15,7 +15,7 @@
                 <li><a th:href="@{/}">Home</a></li>
                 <li class="active"><a href="#">Profile</a></li>
                 <li><a th:href="@{users}">Users</a></li>
-          <!--       <li><a href="/logout" th:if="${authenticated}">logout</a></li>  -->
+                 <li><a href="/logout" th:if="${authenticated}">logout</a></li>
             </ul>
         </div>
     </div>
@@ -30,7 +30,7 @@
             </tr>
             </thead>
             <tbody>
-     <!--        <tr>
+             <tr>
                 <td>ID</td>
                 <td th:text="${authentication.identityUrl}">https://example.com/user/id</td>
             </tr>
@@ -41,8 +41,7 @@
                         <dd th:text="${value}">Attribute Value</dd>
                     </dl>
                 </td>
-            </tr>
-             -->
+            </tr>         
             </tbody>
         </table>
     </div>

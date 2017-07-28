@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = "com.eheiker.appdirect")
+@ComponentScan(basePackages = "com.arjun.appdirect")
 public class WebConfig {
 
     @Value("${local.server.port:8080}")
