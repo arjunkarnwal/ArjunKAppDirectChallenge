@@ -31,6 +31,7 @@ import org.springframework.stereotype.Service;
  * communication details such as transport protocols and marshalling/unmarshalling.
  */
 
+@Service
 public class AppDirectHandler {
 
     private static Logger log = LoggerFactory.getLogger(AppDirectHandler.class);
