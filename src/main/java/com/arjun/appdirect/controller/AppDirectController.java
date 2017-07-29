@@ -3,6 +3,7 @@ package com.arjun.appdirect.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.oauth.provider.ConsumerAuthentication;
@@ -30,12 +31,10 @@ import com.arjun.appdirect.service.UserService;
 @RestController
 @RequestMapping("/appdirect")
 public class AppDirectController {
-
-   /** @AutowiredLogger
-    Logger log;
-	**/
 	
-    @Autowired
+	private static Logger log = LoggerFactory.getLogger(AppDirectController.class);
+    
+	@Autowired
     AppDirectHandler appDirectHandler;
 
     @Autowired
@@ -47,11 +46,9 @@ public class AppDirectController {
             @RequestParam String token,
             @AuthenticationPrincipal ConsumerAuthentication authentication) {
 
-        //logRequest(request, authentication);
+        logRequest(request, authentication);
 
-        GetSubscriptionOrderEventAction action = new GetSubscriptionOrderEventAction(appDirectHandler);
-        action.setUrl(url);
-        action.setToken(token);
+        GetSubscriptionOrderEventAction action = new GetSubscriptionOrderEventAction(appDirectHandler, url, token);
         ActionResult<SubscriptionOrderEvent> actionResult = action.execute();
 
         SubscriptionOrderEvent event = actionResult.getEntity();
@@ -60,12 +57,7 @@ public class AppDirectController {
         UserProfile profile = userService.createProfile(user);
 
         // return result XML
-        EventResult result = new EventResult();
-        result.setAccountIdentifier("eheiker-appdirect");
-        result.setMessage("Welcome to AppDirect!");
-        result.setSuccess(profile != null);
-
-        return result;
+        return getResult("Welcome to AppDirect!", profile != null, "arjunk");
     }
 
     
@@ -75,12 +67,10 @@ public class AppDirectController {
             @RequestParam String token,
             @AuthenticationPrincipal ConsumerAuthentication authentication) {
 
-       // logRequest(request, authentication);
+        logRequest(request, authentication);
 
         // get event details
-        GetSubscriptionCancelEventAction action = new GetSubscriptionCancelEventAction(appDirectHandler);
-        action.setUrl(url);
-        action.setToken(token);
+        GetSubscriptionCancelEventAction action = new GetSubscriptionCancelEventAction(appDirectHandler, url, token);
         SubscriptionCancelEvent event = action.execute().getEntity();
         String openId = event.getCreator().getOpenId();
         UserProfile profile = userService.getByOpenID(openId);
@@ -92,11 +82,7 @@ public class AppDirectController {
         }
 
         // return result XML
-        EventResult result = new EventResult();
-        result.setMessage(event.toString());
-        result.setSuccess(deleted);
-
-        return result;
+        return getResult(event.toString(), deleted, null);
     }
     
     
@@ -107,23 +93,17 @@ public class AppDirectController {
             @RequestParam String token,
             @AuthenticationPrincipal ConsumerAuthentication authentication) {
 
-       // logRequest(request, authentication);
+        logRequest(request, authentication);
 
         // get event details
-        GetUserAssignedEventAction action = new GetUserAssignedEventAction(appDirectHandler);
-        action.setUrl(url);
-        action.setToken(token);
+        GetUserAssignedEventAction action = new GetUserAssignedEventAction(appDirectHandler, url, token);
         UserAssignedEvent event = action.execute().getEntity();
         User user = event.getPayload().getUser();
 
         UserProfile profile = userService.createProfile(user);
 
         // return result XML
-        EventResult result = new EventResult();
-        result.setMessage(event.toString());
-        result.setSuccess(profile != null);
-
-        return result;
+        return getResult(event.toString(), profile != null, null);
     }
     
     @RequestMapping("/user/unassign")
@@ -132,12 +112,10 @@ public class AppDirectController {
             @RequestParam String token,
             @AuthenticationPrincipal ConsumerAuthentication authentication) {
 
-     //   logRequest(request, authentication);
+        logRequest(request, authentication);
 
         // get event details
-        GetUserUnassignedEventAction action = new GetUserUnassignedEventAction(appDirectHandler);
-        action.setUrl(url);
-        action.setToken(token);
+        GetUserUnassignedEventAction action = new GetUserUnassignedEventAction(appDirectHandler, url, token);
         UserUnassignedEvent event = action.execute().getEntity();
 
         String openId = event.getPayload().getUser().getOpenId();
@@ -150,13 +128,19 @@ public class AppDirectController {
         }
 
         // return result XML
-        EventResult result = new EventResult();
-        result.setMessage(event.toString());
-        result.setSuccess(deleted);
-
+        return getResult(event.toString(), deleted, null);
+    }
+    
+    private EventResult getResult(final String message, final boolean isSuccess, final String accountIdentifier) {
+    		EventResult result = new EventResult();
+    		result.setAccountIdentifier(accountIdentifier);
+        result.setMessage(message);
+        result.setSuccess(isSuccess);
         return result;
     }
-    /**
+    
+   
+    
     private void logRequest(HttpServletRequest request, ConsumerAuthentication authentication) {
         if (log.isDebugEnabled()) {
             log.debug("request = " + request.getRequestURI() + "?" + request.getQueryString());
@@ -167,5 +151,5 @@ public class AppDirectController {
                 log.debug("Request not authenticated");
             }
         }
-    } **/
+    } 
 }

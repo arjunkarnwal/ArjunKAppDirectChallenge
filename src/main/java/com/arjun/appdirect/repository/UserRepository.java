@@ -1,4 +1,4 @@
-package com.arjun.appdirect.repository.web;
+package com.arjun.appdirect.repository;
 
 
 import java.io.Serializable;

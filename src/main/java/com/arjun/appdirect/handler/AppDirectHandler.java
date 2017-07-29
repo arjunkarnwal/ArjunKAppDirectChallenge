@@ -2,6 +2,7 @@ package com.arjun.appdirect.handler;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.Charset;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -77,9 +78,9 @@ public class AppDirectHandler {
         if (content != null) {
 
             if (log.isDebugEnabled()) {
-                String strContent = IOUtils.toString(content,"UTF-8");
+                String strContent = IOUtils.toString(content,Charset.defaultCharset());
                 log.debug(strContent);
-                content = IOUtils.toInputStream(strContent,"UTF-8");
+                content = IOUtils.toInputStream(strContent,Charset.defaultCharset());
             }
 
             result = parseResponse(content, resultType);
@@ -104,7 +105,7 @@ public class AppDirectHandler {
             Unmarshaller unmarshaller = context.createUnmarshaller();
             result = (T) unmarshaller.unmarshal(content);
         } else if (String.class.isAssignableFrom(resultType)) {
-            result = (T) IOUtils.toString(content,"UTF-8");
+            result = (T) IOUtils.toString(content, Charset.defaultCharset());
         }
 
         return result;

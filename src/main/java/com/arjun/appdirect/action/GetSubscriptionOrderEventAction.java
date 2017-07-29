@@ -5,10 +5,10 @@ import lombok.experimental.Builder;
 import com.arjun.appdirect.handler.AppDirectHandler;
 import com.arjun.appdirect.model.event.subscription.SubscriptionOrderEvent;
 
-public class GetSubscriptionOrderEventAction extends GetEventAction {
+public class GetSubscriptionOrderEventAction extends AppDirectAction {
 
-    public GetSubscriptionOrderEventAction(final AppDirectHandler handler) {
-        super(handler);
+    public GetSubscriptionOrderEventAction(final AppDirectHandler handler, final String url, final String token) {
+        super(handler, url, token);
     }
 
     public ActionResult<SubscriptionOrderEvent> execute() {

@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.dao.EmptyResultDataAccessException;
 
-import com.arjun.appdirect.repository.web.BaseRepository;
+import com.arjun.appdirect.repository.BaseRepository;
 
 public abstract class AbstractCrudService<M, ID extends Serializable> implements CrudService<M, ID>  {
 	

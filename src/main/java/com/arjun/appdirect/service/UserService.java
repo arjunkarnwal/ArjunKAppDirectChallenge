@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.arjun.appdirect.model.User;
 import com.arjun.appdirect.model.web.UserProfile;
-import com.arjun.appdirect.repository.web.BaseRepository;
-import com.arjun.appdirect.repository.web.UserRepository;
+import com.arjun.appdirect.repository.BaseRepository;
+import com.arjun.appdirect.repository.UserRepository;
 
 @Service
 public class UserService extends AbstractCrudService<UserProfile, Long> {
