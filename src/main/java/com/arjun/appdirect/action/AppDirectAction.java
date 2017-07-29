@@ -12,6 +12,7 @@ import oauth.signpost.exception.OAuthMessageSignerException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.arjun.appdirect.handler.AppDirectHandler;
 
@@ -19,13 +20,14 @@ import com.arjun.appdirect.handler.AppDirectHandler;
 public abstract class AppDirectAction implements IAppDirectAction {
 
     private static Logger log = LoggerFactory.getLogger(AppDirectAction.class);
-
+    
+    @Autowired
+    protected AppDirectHandler handler;
+    
     private String token;
 	private String url;
-	protected AppDirectHandler handler;
 
-    public AppDirectAction(final AppDirectHandler handler, final String url, final String token) {
-        this.handler = handler;
+    public AppDirectAction(final String url, final String token) {
         this.url = url;
         this.token = token;
     }
