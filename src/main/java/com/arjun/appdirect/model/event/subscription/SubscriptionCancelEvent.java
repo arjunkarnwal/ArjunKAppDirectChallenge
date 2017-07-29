@@ -17,7 +17,15 @@ public class SubscriptionCancelEvent extends Event {
 
     private SubscriptionCancelPayload payload;
 
-    public SubscriptionCancelEvent() {
+    public SubscriptionCancelPayload getPayload() {
+		return payload;
+	}
+
+	public void setPayload(SubscriptionCancelPayload payload) {
+		this.payload = payload;
+	}
+
+	public SubscriptionCancelEvent() {
         super(EventType.SUBSCRIPTION_CANCEL);
     }
 

@@ -12,4 +12,12 @@ import lombok.ToString;
 @XmlRootElement(name = "payload")
 public class SubscriptionCancelPayload {
     Account account;
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
 }

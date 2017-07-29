@@ -82,13 +82,19 @@ public class AppDirectController {
         action.setUrl(url);
         action.setToken(token);
         SubscriptionCancelEvent event = action.execute().getEntity();
-
+        String openId = event.getCreator().getOpenId();
+        UserProfile profile = userService.getByOpenID(openId);
         //TODO: delete all accounts in system tied to this accountId
+        boolean deleted = true;
+        if (profile != null) {
+        		userService.delete(profile.getId());
+            deleted = !userService.exists(profile.getId());
+        }
 
         // return result XML
         EventResult result = new EventResult();
         result.setMessage(event.toString());
-        result.setSuccess(true);
+        result.setSuccess(deleted);
 
         return result;
     }
