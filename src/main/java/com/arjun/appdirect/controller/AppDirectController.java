@@ -134,7 +134,7 @@ public class AppDirectController {
         action.setToken(token);
         UserUnassignedEvent event = action.execute().getEntity();
 
-        String openId = event.getPayload().getUserAddress().getOpenId();
+        String openId = event.getPayload().getUser().getOpenId();
         UserProfile profile = userService.getByOpenID(openId);
 
         boolean deleted = true;

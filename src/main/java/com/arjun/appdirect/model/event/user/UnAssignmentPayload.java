@@ -10,12 +10,13 @@ import lombok.ToString;
 @ToString
 public class UnAssignmentPayload {
 	
-	UserAddress userAddress;
-	public UserAddress getUserAddress() {
-		return userAddress;
+	UserAddress user;
+	
+	public UserAddress getUser() {
+		return user;
 	}
-	public void setUserAddress(UserAddress userAddress) {
-		this.userAddress = userAddress;
+	public void setUser(UserAddress user) {
+		this.user = user;
 	}
 	public Account getAccount() {
 		return account;
