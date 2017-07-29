@@ -17,19 +17,20 @@ import com.arjun.appdirect.handler.AppDirectHandler;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class GetEventAction extends AppDirectAction {
+public class GetEventAction implements IAppDirectAction {
 
     private static Logger log = LoggerFactory.getLogger(GetEventAction.class);
 
     private String token;
 	private String url;
+	protected AppDirectHandler handler;
 
-    public GetEventAction(final AppDirectHandler client) {
-        super(client);
+    public GetEventAction(final AppDirectHandler handler) {
+        this.handler = handler;
     }
 
     @Override
-    public <T> ActionResult<T> execute(Class<T> resultType) {
+    public <T> ActionResult<T> executeAction(Class<T> resultType) {
         ActionResult<T> result = new ActionResult();
 
         try {
@@ -47,7 +48,7 @@ public class GetEventAction extends AppDirectAction {
     }
 
     protected <T> T getEvent(final String url, final Class<T> clazz) throws JAXBException, OAuthExpectationFailedException, OAuthCommunicationException, OAuthMessageSignerException, IOException {
-        return handler.signAndGet(url, clazz);
+        return handler.handle(url, clazz);
     }
     
     public String getToken() {

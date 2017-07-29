@@ -10,6 +10,6 @@ public class GetUserUnassignedEventAction extends GetEventAction {
     }
 
     public ActionResult<UserUnassignedEvent> execute() {
-        return super.execute(UserUnassignedEvent.class);
+        return super.executeAction(UserUnassignedEvent.class);
     }
 }

@@ -36,7 +36,7 @@ public class AppDirectController {
 	**/
 	
     @Autowired
-    AppDirectHandler appDirectClient;
+    AppDirectHandler appDirectHandler;
 
     @Autowired
     UserService userService;
@@ -49,7 +49,7 @@ public class AppDirectController {
 
         //logRequest(request, authentication);
 
-        GetSubscriptionOrderEventAction action = new GetSubscriptionOrderEventAction(appDirectClient);
+        GetSubscriptionOrderEventAction action = new GetSubscriptionOrderEventAction(appDirectHandler);
         action.setUrl(url);
         action.setToken(token);
         ActionResult<SubscriptionOrderEvent> actionResult = action.execute();
@@ -78,7 +78,7 @@ public class AppDirectController {
        // logRequest(request, authentication);
 
         // get event details
-        GetSubscriptionCancelEventAction action = new GetSubscriptionCancelEventAction(appDirectClient);
+        GetSubscriptionCancelEventAction action = new GetSubscriptionCancelEventAction(appDirectHandler);
         action.setUrl(url);
         action.setToken(token);
         SubscriptionCancelEvent event = action.execute().getEntity();
@@ -110,7 +110,7 @@ public class AppDirectController {
        // logRequest(request, authentication);
 
         // get event details
-        GetUserAssignedEventAction action = new GetUserAssignedEventAction(appDirectClient);
+        GetUserAssignedEventAction action = new GetUserAssignedEventAction(appDirectHandler);
         action.setUrl(url);
         action.setToken(token);
         UserAssignedEvent event = action.execute().getEntity();
@@ -135,7 +135,7 @@ public class AppDirectController {
      //   logRequest(request, authentication);
 
         // get event details
-        GetUserUnassignedEventAction action = new GetUserUnassignedEventAction(appDirectClient);
+        GetUserUnassignedEventAction action = new GetUserUnassignedEventAction(appDirectHandler);
         action.setUrl(url);
         action.setToken(token);
         UserUnassignedEvent event = action.execute().getEntity();

@@ -1,5 +1,5 @@
 package com.arjun.appdirect.action;
 
 public interface IAppDirectAction {
-   <T> ActionResult<T> execute(Class<T> resultType);
+   <T> ActionResult<T> executeAction(Class<T> resultType);
 }

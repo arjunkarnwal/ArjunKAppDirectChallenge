@@ -12,6 +12,6 @@ public class GetSubscriptionOrderEventAction extends GetEventAction {
     }
 
     public ActionResult<SubscriptionOrderEvent> execute() {
-        return execute(SubscriptionOrderEvent.class);
+        return executeAction(SubscriptionOrderEvent.class);
     }
 }

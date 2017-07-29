@@ -11,6 +11,6 @@ public class GetSubscriptionCancelEventAction extends GetEventAction {
     }
 
     public ActionResult<SubscriptionCancelEvent> execute() {
-        return execute(SubscriptionCancelEvent.class);
+        return executeAction(SubscriptionCancelEvent.class);
     }
 }

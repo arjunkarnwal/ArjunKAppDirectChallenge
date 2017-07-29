@@ -65,7 +65,7 @@ public class AppDirectHandler {
      * @throws IOException
      * @throws JAXBException
      */
-    public <T> T signAndGet(String url, Class<T> resultType) throws OAuthCommunicationException, OAuthExpectationFailedException, OAuthMessageSignerException, IOException, JAXBException {
+    public <T> T handle(String url, Class<T> resultType) throws OAuthCommunicationException, OAuthExpectationFailedException, OAuthMessageSignerException, IOException, JAXBException {
         String signedUrl = signUrl(url);
 
         log.debug("signed url = " + signedUrl);

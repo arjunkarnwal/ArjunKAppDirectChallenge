@@ -10,6 +10,6 @@ public class GetUserAssignedEventAction extends GetEventAction {
     }
 
     public ActionResult<UserAssignedEvent> execute() {
-        return super.execute(UserAssignedEvent.class);
+        return super.executeAction(UserAssignedEvent.class);
     }
 }
