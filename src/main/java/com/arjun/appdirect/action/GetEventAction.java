@@ -22,22 +22,6 @@ public class GetEventAction extends AppDirectAction {
     private static Logger log = LoggerFactory.getLogger(GetEventAction.class);
 
     private String token;
-    public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
-	}
-
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
 	private String url;
 
     public GetEventAction(final AppDirectHandler client) {
@@ -63,6 +47,23 @@ public class GetEventAction extends AppDirectAction {
     }
 
     protected <T> T getEvent(final String url, final Class<T> clazz) throws JAXBException, OAuthExpectationFailedException, OAuthCommunicationException, OAuthMessageSignerException, IOException {
-        return client.signAndGet(url, clazz);
+        return handler.signAndGet(url, clazz);
     }
+    
+    public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 }

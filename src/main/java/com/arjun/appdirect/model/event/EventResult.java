@@ -13,6 +13,10 @@ import lombok.ToString;
 public class EventResult {
 
     private boolean success;
+    private String message;
+    private String errorCode;
+    private String accountIdentifier;
+    
     public boolean isSuccess() {
 		return success;
 	}
@@ -37,7 +41,5 @@ public class EventResult {
 	public void setAccountIdentifier(String accountIdentifier) {
 		this.accountIdentifier = accountIdentifier;
 	}
-	private String message;
-    private String errorCode;
-    private String accountIdentifier;
+	
 }

@@ -5,8 +5,8 @@ import com.arjun.appdirect.model.event.user.UserAssignedEvent;
 
 public class GetUserAssignedEventAction extends GetEventAction {
 
-    public GetUserAssignedEventAction(final AppDirectHandler client) {
-        super(client);
+    public GetUserAssignedEventAction(final AppDirectHandler handler) {
+        super(handler);
     }
 
     public ActionResult<UserAssignedEvent> execute() {

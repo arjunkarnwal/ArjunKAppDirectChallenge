@@ -11,6 +11,12 @@ public class User {
     private String email;
     private String firstName;
     private String lastName;
+    private String language;
+    private String openId;
+    private String uuid;
+    private String locale;
+    private Address address;
+    
     public String getEmail() {
 		return email;
 	}
@@ -59,9 +65,5 @@ public class User {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	private String language;
-    private String openId;
-    private String uuid;
-    private String locale;
-    private Address address;
+	
 }

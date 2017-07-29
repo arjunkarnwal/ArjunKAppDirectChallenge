@@ -15,13 +15,13 @@ import lombok.ToString;
 @XmlRootElement(name = "event")
 public class UserUnassignedEvent extends Event {
 
-    private UnAssignmentPayload payload;
+    private AssignmentPayload payload;
 
-    public UnAssignmentPayload getPayload() {
+    public AssignmentPayload getPayload() {
 		return payload;
 	}
 
-	public void setPayload(UnAssignmentPayload payload) {
+	public void setPayload(AssignmentPayload payload) {
 		this.payload = payload;
 	}
 

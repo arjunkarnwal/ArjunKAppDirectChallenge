@@ -5,7 +5,16 @@ import lombok.Data;
 @Data
 public class ActionResult<T> {
 
-    private T entity;
+	private T entity;
+    private boolean success;
+    private String errorMessage;
+
+    public ActionResult() {}
+
+    public ActionResult(T entity) {
+        this.entity = entity;
+    }
+    
     public T getEntity() {
 		return entity;
 	}
@@ -29,13 +38,4 @@ public class ActionResult<T> {
 	public void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
 	}
-
-	private boolean success;
-    private String errorMessage;
-
-    public ActionResult() {}
-
-    public ActionResult(T entity) {
-        this.entity = entity;
-    }
 }

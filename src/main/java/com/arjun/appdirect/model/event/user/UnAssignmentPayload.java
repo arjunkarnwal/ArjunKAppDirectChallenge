@@ -9,7 +9,7 @@ import lombok.ToString;
 @Data
 @ToString
 public class UnAssignmentPayload {
-	
+	Account account;
 	UserAddress user;
 	
 	public UserAddress getUser() {
@@ -24,6 +24,4 @@ public class UnAssignmentPayload {
 	public void setAccount(Account account) {
 		this.account = account;
 	}
-	Account account;
-
 }

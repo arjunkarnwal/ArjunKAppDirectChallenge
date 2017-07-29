@@ -6,8 +6,8 @@ import com.arjun.appdirect.model.event.subscription.SubscriptionCancelEvent;
 
 public class GetSubscriptionCancelEventAction extends GetEventAction {
 
-    public GetSubscriptionCancelEventAction(final AppDirectHandler client) {
-        super(client);
+    public GetSubscriptionCancelEventAction(final AppDirectHandler handler) {
+        super(handler);
     }
 
     public ActionResult<SubscriptionCancelEvent> execute() {

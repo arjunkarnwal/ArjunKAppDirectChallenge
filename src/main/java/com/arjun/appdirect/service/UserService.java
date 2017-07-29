@@ -2,6 +2,7 @@ package com.arjun.appdirect.service;
 
 import java.io.Serializable;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,11 +35,11 @@ public class UserService extends AbstractCrudService<UserProfile, Long> {
             throw new IllegalArgumentException("User can not be null");
         }
         
-        /**
+        
         if (StringUtils.isEmpty(user.getOpenId())) {
             throw new IllegalArgumentException("User's OpenId can not be empty");
         }
-		**/
+		
         UserProfile profile = this.getByOpenID(user.getOpenId());
 
         if (profile == null) {

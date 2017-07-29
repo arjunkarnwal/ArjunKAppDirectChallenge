@@ -7,8 +7,8 @@ import com.arjun.appdirect.model.event.subscription.SubscriptionOrderEvent;
 
 public class GetSubscriptionOrderEventAction extends GetEventAction {
 
-    public GetSubscriptionOrderEventAction(final AppDirectHandler client) {
-        super(client);
+    public GetSubscriptionOrderEventAction(final AppDirectHandler handler) {
+        super(handler);
     }
 
     public ActionResult<SubscriptionOrderEvent> execute() {

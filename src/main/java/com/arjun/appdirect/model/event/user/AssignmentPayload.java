@@ -10,6 +10,8 @@ import lombok.ToString;
 @ToString
 public class AssignmentPayload {
     Account account;
+    User user;
+    
     public Account getAccount() {
 		return account;
 	}
@@ -22,5 +24,4 @@ public class AssignmentPayload {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	User user;
 }

@@ -30,5 +30,11 @@ public class UserController {
         model.addAttribute("authenticated", authentication != null ? OpenIDAuthenticationStatus.SUCCESS.equals(authentication.getStatus()) : Boolean.FALSE);
         return "appDirectUsers";
     }
+    
+	@RequestMapping("/")
+    public String index(Model model, OpenIDAuthenticationToken authentication) {
+        model.addAttribute("authenticated", authentication != null ? OpenIDAuthenticationStatus.SUCCESS.equals(authentication.getStatus()) : Boolean.FALSE);
+        return "index";
+    }
 
 }

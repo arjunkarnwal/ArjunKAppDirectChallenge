@@ -8,6 +8,13 @@ import lombok.Data;
 @Data
 public abstract class Event {
     private EventType type;
+    private Marketplace marketplace;
+    private User creator;
+    
+	public Event(EventType type) {
+        this.type = type;
+    }
+    
     public EventType getType() {
 		return type;
 	}
@@ -32,10 +39,4 @@ public abstract class Event {
 		this.creator = creator;
 	}
 
-	private Marketplace marketplace;
-    private User creator;
-
-    public Event(EventType type) {
-        this.type = type;
-    }
 }

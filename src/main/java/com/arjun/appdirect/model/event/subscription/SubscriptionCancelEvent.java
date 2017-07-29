@@ -17,6 +17,10 @@ public class SubscriptionCancelEvent extends Event {
 
     private SubscriptionCancelPayload payload;
 
+    public SubscriptionCancelEvent() {
+        super(EventType.SUBSCRIPTION_CANCEL);
+    }
+    
     public SubscriptionCancelPayload getPayload() {
 		return payload;
 	}
@@ -24,10 +28,5 @@ public class SubscriptionCancelEvent extends Event {
 	public void setPayload(SubscriptionCancelPayload payload) {
 		this.payload = payload;
 	}
-
-	public SubscriptionCancelEvent() {
-        super(EventType.SUBSCRIPTION_CANCEL);
-    }
-
 
 }

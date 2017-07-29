@@ -4,9 +4,9 @@ import com.arjun.appdirect.handler.AppDirectHandler;
 
 public abstract class AppDirectAction implements IAppDirectAction {
 
-    protected AppDirectHandler client;
+    protected AppDirectHandler handler;
 
-    public AppDirectAction(AppDirectHandler client) {
-        this.client = client;
+    public AppDirectAction(AppDirectHandler handler) {
+        this.handler = handler;
     }
 }
