@@ -16,7 +16,6 @@ import org.slf4j.LoggerFactory;
 import com.arjun.appdirect.handler.AppDirectHandler;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
 public class GetEventAction implements IAppDirectAction {
 
     private static Logger log = LoggerFactory.getLogger(GetEventAction.class);
