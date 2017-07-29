@@ -17,7 +17,15 @@ public class UserAssignedEvent extends Event {
 
     private AssignmentPayload payload;
 
-    public UserAssignedEvent() {
+    public AssignmentPayload getPayload() {
+		return payload;
+	}
+
+	public void setPayload(AssignmentPayload payload) {
+		this.payload = payload;
+	}
+
+	public UserAssignedEvent() {
         super(EventType.USER_ASSIGNED);
     }
 }

@@ -11,6 +11,18 @@ import lombok.ToString;
 public class UnAssignmentPayload {
 	
 	UserAddress userAddress;
+	public UserAddress getUserAddress() {
+		return userAddress;
+	}
+	public void setUserAddress(UserAddress userAddress) {
+		this.userAddress = userAddress;
+	}
+	public Account getAccount() {
+		return account;
+	}
+	public void setAccount(Account account) {
+		this.account = account;
+	}
 	Account account;
 
 }

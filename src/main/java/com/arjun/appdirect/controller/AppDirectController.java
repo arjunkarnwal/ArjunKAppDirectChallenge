@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.oauth.provider.ConsumerAuthentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,8 @@ import com.arjun.appdirect.model.User;
 import com.arjun.appdirect.model.event.EventResult;
 import com.arjun.appdirect.model.event.subscription.SubscriptionCancelEvent;
 import com.arjun.appdirect.model.event.subscription.SubscriptionOrderEvent;
+import com.arjun.appdirect.model.event.user.UserAssignedEvent;
+import com.arjun.appdirect.model.event.user.UserUnassignedEvent;
 import com.arjun.appdirect.model.web.UserProfile;
 import com.arjun.appdirect.service.UserService;
 
@@ -90,7 +93,7 @@ public class AppDirectController {
         return result;
     }
     
-    /**
+    
 
     @RequestMapping("/user/assign")
     public EventResult assignUser(HttpServletRequest request,
@@ -98,16 +101,16 @@ public class AppDirectController {
             @RequestParam String token,
             @AuthenticationPrincipal ConsumerAuthentication authentication) {
 
-        logRequest(request, authentication);
+       // logRequest(request, authentication);
 
         // get event details
         GetUserAssignedEventAction action = new GetUserAssignedEventAction(appDirectClient);
         action.setUrl(url);
         action.setToken(token);
         UserAssignedEvent event = action.execute().getEntity();
-        UserProfile user = event.getPayload().getUser();
+        User user = event.getPayload().getUser();
 
-        Profile profile = userService.createProfile(user);
+        UserProfile profile = userService.createProfile(user);
 
         // return result XML
         EventResult result = new EventResult();
@@ -116,14 +119,14 @@ public class AppDirectController {
 
         return result;
     }
-
+    
     @RequestMapping("/user/unassign")
     public EventResult unassignUser(HttpServletRequest request,
             @RequestParam String url,
             @RequestParam String token,
             @AuthenticationPrincipal ConsumerAuthentication authentication) {
 
-        logRequest(request, authentication);
+     //   logRequest(request, authentication);
 
         // get event details
         GetUserUnassignedEventAction action = new GetUserUnassignedEventAction(appDirectClient);
@@ -131,13 +134,13 @@ public class AppDirectController {
         action.setToken(token);
         UserUnassignedEvent event = action.execute().getEntity();
 
-        String openId = event.getPayload().getUser().getOpenId();
-        Profile profile = profileService.getByOpenID(openId);
+        String openId = event.getPayload().getUserAddress().getOpenId();
+        UserProfile profile = userService.getByOpenID(openId);
 
         boolean deleted = true;
         if (profile != null) {
-            profileService.delete(profile.getId());
-            deleted = !profileService.exists(profile.getId());
+        		userService.delete(profile.getId());
+            deleted = !userService.exists(profile.getId());
         }
 
         // return result XML
@@ -147,7 +150,7 @@ public class AppDirectController {
 
         return result;
     }
-
+    /**
     private void logRequest(HttpServletRequest request, ConsumerAuthentication authentication) {
         if (log.isDebugEnabled()) {
             log.debug("request = " + request.getRequestURI() + "?" + request.getQueryString());

@@ -17,7 +17,15 @@ public class UserUnassignedEvent extends Event {
 
     private UnAssignmentPayload payload;
 
-    public UserUnassignedEvent() {
+    public UnAssignmentPayload getPayload() {
+		return payload;
+	}
+
+	public void setPayload(UnAssignmentPayload payload) {
+		this.payload = payload;
+	}
+
+	public UserUnassignedEvent() {
         super(EventType.USER_UNASSIGNED);
     }
 }
