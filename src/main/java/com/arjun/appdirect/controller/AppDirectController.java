@@ -34,6 +34,9 @@ public class AppDirectController {
 	
 	private static Logger log = LoggerFactory.getLogger(AppDirectController.class);
     
+	@Autowired
+    AppDirectHandler appDirectHandler;
+
     @Autowired
     UserService userService;
 
@@ -45,7 +48,7 @@ public class AppDirectController {
 
         logRequest(request, authentication);
 
-        GetSubscriptionOrderEventAction action = new GetSubscriptionOrderEventAction(url, token);
+        GetSubscriptionOrderEventAction action = new GetSubscriptionOrderEventAction(appDirectHandler, url, token);
         ActionResult<SubscriptionOrderEvent> actionResult = action.execute();
 
         SubscriptionOrderEvent event = actionResult.getEntity();
@@ -67,11 +70,11 @@ public class AppDirectController {
         logRequest(request, authentication);
 
         // get event details
-        GetSubscriptionCancelEventAction action = new GetSubscriptionCancelEventAction(url, token);
+        GetSubscriptionCancelEventAction action = new GetSubscriptionCancelEventAction(appDirectHandler, url, token);
         SubscriptionCancelEvent event = action.execute().getEntity();
         String openId = event.getCreator().getOpenId();
         UserProfile profile = userService.getByOpenID(openId);
-        //TODO: delete all accounts in system tied to this accountId
+        
         boolean deleted = true;
         if (profile != null) {
         		userService.delete(profile.getId());
@@ -93,7 +96,7 @@ public class AppDirectController {
         logRequest(request, authentication);
 
         // get event details
-        GetUserAssignedEventAction action = new GetUserAssignedEventAction(url, token);
+        GetUserAssignedEventAction action = new GetUserAssignedEventAction(appDirectHandler, url, token);
         UserAssignedEvent event = action.execute().getEntity();
         User user = event.getPayload().getUser();
 
@@ -112,7 +115,7 @@ public class AppDirectController {
         logRequest(request, authentication);
 
         // get event details
-        GetUserUnassignedEventAction action = new GetUserUnassignedEventAction(url, token);
+        GetUserUnassignedEventAction action = new GetUserUnassignedEventAction(appDirectHandler, url, token);
         UserUnassignedEvent event = action.execute().getEntity();
 
         String openId = event.getPayload().getUser().getOpenId();
