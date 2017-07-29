@@ -11,6 +11,5 @@ import com.arjun.appdirect.model.web.UserProfile;
 public interface UserRepository extends BaseRepository<UserProfile, Serializable> {
 	
 	public UserProfile findByOpenId(String openId);
-	public UserProfile findByEmail(String email);
 	
 }

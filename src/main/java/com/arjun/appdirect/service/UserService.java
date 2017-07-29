@@ -21,10 +21,6 @@ public class UserService extends AbstractCrudService<UserProfile, Long> {
         return repository.findByOpenId(openId);
     }
 
-    public UserProfile getByEmail(String email) {
-        return repository.findByEmail(email);
-    }
-
     @Override
     protected BaseRepository<UserProfile, Serializable> getRepository() {
         return repository;

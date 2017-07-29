@@ -18,8 +18,11 @@ public class UserProfile {
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-	
 	private String email;
+	private String openId;
+	private String firstName;
+    private String lastName;
+    
     public Long getId() {
 		return id;
 	}
@@ -60,12 +63,7 @@ public class UserProfile {
 		this.lastName = lastName;
 	}
 
-	private String openId;
-
-    private String firstName;
-    private String lastName;
-    
-    @Override
+	@Override
     public String toString() {
         return String.format(
                 "User[id=%d, firstName='%s', lastName='%s']",
