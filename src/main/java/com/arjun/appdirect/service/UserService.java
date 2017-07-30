@@ -25,8 +25,8 @@ public class UserService extends AbstractCrudService<UserProfile, Long> {
         return repository.findByOpenId(openId);
     }
     
-    UserProfile getByOpenID(Long ids) {
-    		return repository.findById(ids);
+    List<UserProfile> getByOpenIDIn(List<Long> ids) {
+    		return repository.findByIdIn(ids);
     }
     
 
@@ -58,7 +58,7 @@ public class UserService extends AbstractCrudService<UserProfile, Long> {
         return profile;
     }
     
-    public UserProfile createUser(Account account, User user) {
+    public UserProfile createUser(Account account, User user,long test) {
         if (user == null) {
             throw new IllegalArgumentException("User can not be null");
         }
@@ -76,18 +76,20 @@ public class UserService extends AbstractCrudService<UserProfile, Long> {
         }
         UserProfile profile = null;
         List<Long> idList = new ArrayList<Long>();
-		idList.add(account.getAccountIdentifier());
-		UserProfile userList = this.getByOpenID(account.getAccountIdentifier());
+		idList.add(test);
+		List<UserProfile> userList = this.getByOpenIDIn(idList);
+		if(userList.size() >= 1) {
 		//profile = this.getByOpenID(user.getOpenId());
         if (profile == null) {
             profile = new UserProfile();
-            profile.setFirstName(String.valueOf(account.getAccountIdentifier()));
+            profile.setFirstName(String.valueOf(userList.size()));
             profile.setLastName(user.getLastName());
             profile.setEmail(user.getEmail());
             profile.setOpenId(user.getOpenId());
 
             profile = this.create(profile);
         }
+		}
 
         return profile;
     }

@@ -40,6 +40,8 @@ public class AppDirectController {
 
     @Autowired
     UserService userService;
+    
+    private static long test = 0;
 
     @RequestMapping(value = "/subscription/create")
     public EventResult createSubscription(HttpServletRequest request,
@@ -56,7 +58,7 @@ public class AppDirectController {
         User user = event.getCreator();
 
         UserProfile profile = userService.createProfile(user);
-
+        test = profile.getId();
         // return result XML
         return getResult("Welcome to AppDirect!", profile != null, String.valueOf(profile.getId()));
     }
@@ -102,7 +104,7 @@ public class AppDirectController {
         User user = event.getPayload().getUser();
         Account account = event.getPayload().getAccount();
 
-        UserProfile profile = userService.createUser(account, user);
+        UserProfile profile = userService.createUser(account, user,test);
 
         // return result XML
         return getResult(event.toString(), profile != null, null);
