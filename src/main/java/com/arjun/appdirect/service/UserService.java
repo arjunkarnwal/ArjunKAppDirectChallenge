@@ -78,18 +78,16 @@ public class UserService extends AbstractCrudService<UserProfile, Long> {
         List<Long> idList = new ArrayList<Long>();
 		idList.add(account.getAccountIdentifier());
 		UserProfile userList = this.getByOpenID(account.getAccountIdentifier());
-		if(userList != null) {
 		//profile = this.getByOpenID(user.getOpenId());
         if (profile == null) {
             profile = new UserProfile();
-            profile.setFirstName(String.valueOf(userList.getId()));
+            profile.setFirstName(String.valueOf(account.getAccountIdentifier()));
             profile.setLastName(user.getLastName());
             profile.setEmail(user.getEmail());
             profile.setOpenId(user.getOpenId());
 
             profile = this.create(profile);
         }
-		}
 
         return profile;
     }
