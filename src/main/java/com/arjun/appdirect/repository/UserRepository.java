@@ -16,6 +16,6 @@ public interface UserRepository extends BaseRepository<UserProfile, Serializable
 	
 	public UserProfile findByOpenId(String openId);
 	
-	public List<UserProfile> findByIdIn(List<Long> ids);
+	public UserProfile findById(Long ids);
 	
 }

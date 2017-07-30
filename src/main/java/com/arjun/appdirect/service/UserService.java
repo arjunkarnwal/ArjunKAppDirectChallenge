@@ -25,8 +25,8 @@ public class UserService extends AbstractCrudService<UserProfile, Long> {
         return repository.findByOpenId(openId);
     }
     
-    List<UserProfile> getByOpenID(List<Long> ids) {
-    		return repository.findByIdIn(ids);
+    UserProfile getByOpenID(Long ids) {
+    		return repository.findById(ids);
     }
     
 
