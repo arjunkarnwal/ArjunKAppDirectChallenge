@@ -1,5 +1,7 @@
 package com.arjun.appdirect.model.event.user;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import com.arjun.appdirect.model.Account;
 import com.arjun.appdirect.model.User;
 
@@ -8,6 +10,7 @@ import lombok.ToString;
 
 @Data
 @ToString
+@XmlRootElement(name = "payload")
 public class AssignmentPayload {
     Account account;
     User user;
