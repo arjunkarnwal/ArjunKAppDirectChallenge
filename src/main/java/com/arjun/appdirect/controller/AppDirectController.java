@@ -18,6 +18,7 @@ import com.arjun.appdirect.action.GetSubscriptionOrderEventAction;
 import com.arjun.appdirect.action.GetUserAssignedEventAction;
 import com.arjun.appdirect.action.GetUserUnassignedEventAction;
 import com.arjun.appdirect.handler.AppDirectHandler;
+import com.arjun.appdirect.model.Account;
 import com.arjun.appdirect.model.User;
 import com.arjun.appdirect.model.event.EventResult;
 import com.arjun.appdirect.model.event.subscription.SubscriptionCancelEvent;
@@ -99,8 +100,9 @@ public class AppDirectController {
         GetUserAssignedEventAction action = new GetUserAssignedEventAction(appDirectHandler, url, token);
         UserAssignedEvent event = action.execute().getEntity();
         User user = event.getPayload().getUser();
+        Account account = event.getPayload().getAccount();
 
-        UserProfile profile = userService.createProfile(user);
+        UserProfile profile = userService.createUser(account, user);
 
         // return result XML
         return getResult(event.toString(), profile != null, null);
