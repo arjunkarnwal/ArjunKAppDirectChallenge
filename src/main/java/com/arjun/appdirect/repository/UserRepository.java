@@ -2,7 +2,6 @@ package com.arjun.appdirect.repository;
 
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;

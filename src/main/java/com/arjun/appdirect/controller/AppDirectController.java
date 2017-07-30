@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.security.oauth.provider.ConsumerAuthentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,8 +39,6 @@ public class AppDirectController {
 
     @Autowired
     UserService userService;
-    
-    private static long test = 0;
 
     @RequestMapping(value = "/subscription/create")
     public EventResult createSubscription(HttpServletRequest request,
@@ -58,7 +55,6 @@ public class AppDirectController {
         User user = event.getCreator();
 
         UserProfile profile = userService.createProfile(user);
-        test = profile.getId();
         // return result XML
         return getResult("Welcome to AppDirect!", profile != null, String.valueOf(profile.getId()));
     }
@@ -103,9 +99,10 @@ public class AppDirectController {
         UserAssignedEvent event = action.execute().getEntity();
         User user = event.getPayload().getUser();
         Account account = event.getPayload().getAccount();
-
-        UserProfile profile = userService.createUser(account, user,test);
-
+        // TODO Implemented below.Need more testing so commenting.
+       // UserProfile profile = userService.createPr(account, user);
+        UserProfile profile = userService.createProfile(user);
+        
         // return result XML
         return getResult(event.toString(), profile != null, null);
     }

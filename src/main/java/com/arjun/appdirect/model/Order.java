@@ -7,11 +7,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import lombok.Data;
-import lombok.ToString;
 
-@Data
-@ToString
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Order {

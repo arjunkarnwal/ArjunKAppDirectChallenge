@@ -2,10 +2,7 @@ package com.arjun.appdirect.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-import lombok.Data;
-import lombok.ToString;
 
-@Data
 @XmlRootElement
 public class User {
     private String email;

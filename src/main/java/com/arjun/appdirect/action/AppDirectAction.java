@@ -4,8 +4,6 @@ import java.io.IOException;
 
 import javax.xml.bind.JAXBException;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import oauth.signpost.exception.OAuthCommunicationException;
 import oauth.signpost.exception.OAuthExpectationFailedException;
 import oauth.signpost.exception.OAuthMessageSignerException;
@@ -15,7 +13,6 @@ import org.slf4j.LoggerFactory;
 
 import com.arjun.appdirect.handler.AppDirectHandler;
 
-@Data
 public class AppDirectAction implements IAppDirectAction {
 
     private static Logger log = LoggerFactory.getLogger(AppDirectAction.class);

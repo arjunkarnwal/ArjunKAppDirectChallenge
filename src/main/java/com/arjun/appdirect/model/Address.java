@@ -2,11 +2,7 @@ package com.arjun.appdirect.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-import lombok.Data;
-import lombok.ToString;
 
-@Data
-@ToString
 @XmlRootElement
 public class Address {
 	private String city;

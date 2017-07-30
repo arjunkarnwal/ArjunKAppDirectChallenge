@@ -1,14 +1,7 @@
 package com.arjun.appdirect.model;
 
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlAccessType;
 
-import lombok.Data;
-import lombok.ToString;
-
-@Data
-@ToString
 @XmlRootElement
 public class Account {
     private Long accountIdentifier;

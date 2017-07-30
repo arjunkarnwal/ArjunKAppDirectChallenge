@@ -1,8 +1,6 @@
 package com.arjun.appdirect.action;
 
-import lombok.Data;
 
-@Data
 public class ActionResult<T> {
 
 	private T entity;
