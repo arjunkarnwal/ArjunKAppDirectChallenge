@@ -36,8 +36,8 @@ public class UserService extends AbstractCrudService<UserProfile, Long> {
             throw new IllegalArgumentException("User's OpenId can not be empty");
         }
 		
-        UserProfile profile = this.getByOpenID(user.getOpenId());
-
+       // UserProfile profile = this.getByOpenID(user.getOpenId());
+        UserProfile profile = null;
         if (profile == null) {
             profile = new UserProfile();
             profile.setFirstName(user.getFirstName());
