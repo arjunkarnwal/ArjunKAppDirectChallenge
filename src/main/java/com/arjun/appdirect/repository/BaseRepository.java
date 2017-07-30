@@ -13,4 +13,7 @@ public interface BaseRepository<T, ID extends Serializable> extends PagingAndSor
 	
 	@Override
     List<T> findAll();
+	
+	@Override
+	List<T> findAll(Iterable<ID> ids);
 }

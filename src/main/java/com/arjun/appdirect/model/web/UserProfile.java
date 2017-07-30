@@ -8,9 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-
-
-
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class UserProfile {
@@ -62,11 +59,4 @@ public class UserProfile {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
-	@Override
-    public String toString() {
-        return String.format(
-                "User[id=%d, firstName='%s', lastName='%s']",
-                id, firstName, lastName);
-    }
 }

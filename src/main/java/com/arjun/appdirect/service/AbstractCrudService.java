@@ -56,7 +56,7 @@ public abstract class AbstractCrudService<M, ID extends Serializable> implements
         try {
             getRepository().delete(id);
         } catch (EmptyResultDataAccessException e) {
-            // eat it
+        		throw new DataRetrievalFailureException("No item with id " + id);
         }
     }
 

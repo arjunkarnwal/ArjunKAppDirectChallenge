@@ -57,7 +57,7 @@ public class AppDirectController {
         UserProfile profile = userService.createProfile(user);
 
         // return result XML
-        return getResult("Welcome to AppDirect!", profile != null, "arjunk");
+        return getResult("Welcome to AppDirect!", profile != null, String.valueOf(profile.getId()));
     }
 
     
