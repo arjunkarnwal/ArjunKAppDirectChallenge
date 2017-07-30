@@ -9,8 +9,7 @@ import lombok.ToString;
 
 @Data
 @ToString
-@XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlRootElement(name = "account")
+@XmlRootElement
 public class Account {
     private Long accountIdentifier;
     public Long getAccountIdentifier() {
